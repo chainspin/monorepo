@@ -1,0 +1,36 @@
+{
+  "name": "@chainspin/test",
+  "version": "0.1.0-alpha14",
+  "description": "Test suits for ChainSpin framework.",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "clean": "rm -Rf ./dist",
+    "build": "npm run clean; tsc",
+    "lint": "tslint 'src/**/*.ts?(x)'",
+    "prepare": "npm run build",
+    "test": "NODE_NO_WARNINGS=1 mocha --require ts-node/register --inspect --recursive ./src/tests/**/*.test.ts"
+  },
+  "chainspin": {
+    "sandboxHost": "127.0.0.1",
+    "sandboxPort": 8545,
+    "solcDist": "src/tests/assets",
+    "testRoot": "src/tests/assets",
+    "testTimeout": 60000
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^10.3.2",
+    "ts-node": "^6.1.0",
+    "typescript": "^2.9.1"
+  },
+  "dependencies": {
+    "@chainspin/sandbox": "0.1.0-alpha1",
+    "@chainspin/utils": "0.1.0-alpha4",
+    "@chainspin/web3": "1.0.0-alpha3",
+    "@types/chai": "^4.1.3",
+    "@types/mocha": "^5.2.1",
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0"
+  }
+}

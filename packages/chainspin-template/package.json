@@ -1,0 +1,30 @@
+{
+  "name": "@chainspin/template",
+  "version": "0.1.0",
+  "description": "ChainSpin project",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "clean": "rm -Rf ./dist; rm -Rf ./build",
+    "build": "npm run clean; tsc",
+    "compile": "chainspin compile",
+    "sandbox": "chainspin sandbox",
+    "prepare": "npm run build && npm run compile",
+    "test": "npm run prepare && chainspin test"
+  },
+  "chainspin": {
+    "sandboxHost": "127.0.0.1",
+    "sandboxPort": 8545,
+    "solcSrc": "src/contracts",
+    "solcDist": "dist/contracts",
+    "testRoot": "dist/tests",
+    "testTimeout": 60000
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@chainspin/cli": "^0.1.0-alpha15"
+  },
+  "devDependencies": {
+    "typescript": "2.9.1"
+  }
+}

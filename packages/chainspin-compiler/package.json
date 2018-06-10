@@ -1,6 +1,6 @@
 {
   "name": "@chainspin/compiler",
-  "version": "0.1.0-alpha7",
+  "version": "0.1.0-beta1",
   "description": "Solidity contract compiler for ChainSpin framework.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -23,7 +23,7 @@
     "typescript": "^2.9.1"
   },
   "dependencies": {
-    "@chainspin/utils": "0.1.0-alpha4",
+    "@chainspin/utils": "^0.1.0-beta1",
     "solc": "^0.4.24"
   }
 }

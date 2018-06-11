@@ -32,3 +32,9 @@ Compile contracts.
 ```
 $ npm run compile
 ```
+
+## Development
+
+```
+$ lerna run build & lerna publish
+```

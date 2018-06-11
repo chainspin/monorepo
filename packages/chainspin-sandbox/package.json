@@ -1,6 +1,6 @@
 {
   "name": "@chainspin/sandbox",
-  "version": "0.8.2",
+  "version": "0.9.0",
   "description": "Ethereum sandbox server for ChainSpin framework.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

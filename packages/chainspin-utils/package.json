@@ -1,6 +1,6 @@
 {
   "name": "@chainspin/utils",
-  "version": "0.1.0-beta2",
+  "version": "0.1.0-beta2.0",
   "description": "Utilities for ChainSping framework.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

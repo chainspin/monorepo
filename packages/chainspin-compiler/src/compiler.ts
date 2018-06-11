@@ -71,9 +71,9 @@ export class Compiler {
 
     const output = solc.compile({ sources }, 1);
     if (output.errors) {
-      throw new Error(output.errors);
+      // throw new Error(output.errors);
     }
-    
+
     for (const name in output.contracts) {
       const contract = output.contracts[name];
       this.data.push({

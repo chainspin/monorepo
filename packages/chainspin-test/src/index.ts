@@ -1,4 +1,4 @@
-import { Web3 } from '@chainspin/web3';
+import * as Web3 from 'web3';
 import { Artifact } from './artifact';
 import { Runner } from './runner';
 import { getConfigSync } from './config';

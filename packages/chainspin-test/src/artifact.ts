@@ -1,13 +1,12 @@
 import * as path from 'path';
 import * as utils from '@chainspin/utils';
-import { Web3 } from '@chainspin/web3';
 
 /**
  * Artifact configuration recipe.
  */
 export interface ArtifactRecipe {
   root: string;
-  web3: Web3;
+  web3: any;
 }
 
 /**

@@ -2,6 +2,11 @@
 
 > A simple framework for building Solidity projects.
 
+## Requirements
+
+* NodeJS v10.3.0+
+* Linux or Mac OS X.
+
 ## Installation
 
 Install the command-line tool globaly.
@@ -36,5 +41,6 @@ $ npm run compile
 ## Development
 
 ```
-$ lerna run build & lerna publish
+$ npx lerna run build
+$ npx lerna publish --force-publish
 ```

@@ -1,6 +1,6 @@
 {
   "name": "@chainspin/sandbox",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "description": "Ethereum sandbox server for ChainSpin framework.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -8,7 +8,7 @@
     "clean": "rm -Rf ./dist",
     "build": "npm run clean; tsc",
     "lint": "tslint 'src/**/*.ts?(x)'",
-    "prepare": "npm run build",
+    "prepublishOnly": "npm run build",
     "test": "NODE_NO_WARNINGS=1 mocha --require ts-node/register --inspect --recursive ./src/tests/**/*.test.ts"
   },
   "license": "MIT",

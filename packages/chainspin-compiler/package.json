@@ -1,6 +1,6 @@
 {
   "name": "@chainspin/compiler",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "description": "Solidity contract compiler for ChainSpin framework.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -8,7 +8,7 @@
     "clean": "rm -Rf ./dist",
     "build": "npm run clean; tsc",
     "lint": "tslint 'src/**/*.ts?(x)'",
-    "prepare": "npm run build",
+    "prepublishOnly": "npm run build",
     "test": "NODE_NO_WARNINGS=1 mocha --require ts-node/register --inspect --recursive ./src/tests/**/*.test.ts"
   },
   "license": "MIT",
@@ -23,7 +23,7 @@
     "typescript": "^2.9.1"
   },
   "dependencies": {
-    "@chainspin/utils": "^0.8.1",
+    "@chainspin/utils": "^0.8.2",
     "solc": "^0.4.24"
   }
 }

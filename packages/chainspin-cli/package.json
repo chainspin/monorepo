@@ -1,6 +1,6 @@
 {
   "name": "@chainspin/cli",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "description": "Command-line tool for ChainSpin framework.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -11,7 +11,7 @@
     "clean": "rm -Rf ./dist; rm -Rf ./build",
     "build": "npm run clean; tsc",
     "lint": "tslint 'src/**/*.ts?(x)'",
-    "prepare": "npm run build"
+    "prepublishOnly": "npm run build"
   },
   "chainspin": {
     "sandboxHost": "127.0.0.1",
@@ -32,11 +32,11 @@
     "typescript": "^2.9.1"
   },
   "dependencies": {
-    "@chainspin/compiler": "^0.8.1",
-    "@chainspin/init": "^0.8.1",
-    "@chainspin/sandbox": "^0.8.1",
-    "@chainspin/test": "^0.8.1",
-    "@chainspin/utils": "^0.8.1",
+    "@chainspin/compiler": "^0.8.2",
+    "@chainspin/init": "^0.8.2",
+    "@chainspin/sandbox": "^0.8.2",
+    "@chainspin/test": "^0.8.2",
+    "@chainspin/utils": "^0.8.2",
     "commander": "^2.15.1",
     "inquirer": "^6.0.0"
   }

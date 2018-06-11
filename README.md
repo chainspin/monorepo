@@ -12,7 +12,7 @@
 Install the command-line tool globaly.
 
 ```
-$ npm install -g chainspin-cli
+$ npm install -g @chainspin/cli
 ```
 
 Create a new project.

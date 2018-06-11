@@ -43,4 +43,8 @@ describe('index', function () {
     assert.equal(!!utils.writeFile, true);
   });
 
+  it('exposes toTuple method', async function () {
+    assert.equal(!!utils.toTuple, true);
+  });
+
 });

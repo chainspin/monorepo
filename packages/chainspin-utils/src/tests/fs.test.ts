@@ -117,7 +117,7 @@ describe('fs', function () {
         return dirs.map((d) => d.split(/\/|\\/).reverse()[0])
           .filter((f) => f !== '.DS_Store');
       });
-      assert.deepEqual(dirs, ['fs.ts', 'index.ts']);
+      assert.deepEqual(dirs, ['fs.ts', 'index.ts', 'web3.ts']);
     });
 
   });
@@ -130,7 +130,7 @@ describe('fs', function () {
         return dirs.map((d) => d.split(/\/|\\/).reverse()[0])
           .filter((f) => f !== '.DS_Store');
       });
-      assert.deepEqual(dirs, ['fs.ts', 'index.ts', 'fs.test.ts', 'index.test.ts']);
+      assert.deepEqual(dirs, ['fs.ts', 'index.ts', 'web3.ts', 'fs.test.ts', 'index.test.ts', 'web3.test.ts']);
     });
 
   });

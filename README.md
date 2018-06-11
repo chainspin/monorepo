@@ -9,7 +9,7 @@
 
 ## Installation
 
-Install the command-line tool globaly.
+Install the command-line tool globally.
 
 ```
 $ npm install -g @chainspin/cli

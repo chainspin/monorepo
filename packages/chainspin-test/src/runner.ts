@@ -32,7 +32,7 @@ export class Runner {
       port: 8545,
       timeout: 120000,
       quiet: false,
-      filter: (f) => f.substr(-8) === '.test.js',
+      filter: (f) => f.substr(-8, 6) === '.test.',
       ...recipe,
     };
     

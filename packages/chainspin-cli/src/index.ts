@@ -35,4 +35,5 @@ program
   .action(testHandler);
 program
   .command('')
+program
   .parse(process.argv);

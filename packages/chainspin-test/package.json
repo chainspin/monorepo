@@ -1,6 +1,6 @@
 {
   "name": "@chainspin/test",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "Test suits for ChainSpin framework.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -25,11 +25,12 @@
     "typescript": "^2.9.1"
   },
   "dependencies": {
-    "@chainspin/sandbox": "^0.8.0",
-    "@chainspin/utils": "^0.8.0",
+    "@chainspin/sandbox": "^0.8.1",
+    "@chainspin/utils": "^0.8.1",
     "@types/chai": "^4.1.3",
     "@types/mocha": "^5.2.1",
     "chai": "^4.1.2",
+    "lerna": "^2.11.0",
     "mocha": "^5.2.0",
     "web3": "git+https://github.com/ethereum/web3.js#newAbiLib"
   }

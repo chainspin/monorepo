@@ -1,6 +1,6 @@
 {
   "name": "@chainspin/cli",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "Command-line tool for ChainSpin framework.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -32,11 +32,11 @@
     "typescript": "^2.9.1"
   },
   "dependencies": {
-    "@chainspin/compiler": "^0.8.0",
-    "@chainspin/init": "^0.8.0",
-    "@chainspin/sandbox": "^0.8.0",
-    "@chainspin/test": "^0.8.0",
-    "@chainspin/utils": "^0.8.0",
+    "@chainspin/compiler": "^0.8.1",
+    "@chainspin/init": "^0.8.1",
+    "@chainspin/sandbox": "^0.8.1",
+    "@chainspin/test": "^0.8.1",
+    "@chainspin/utils": "^0.8.1",
     "commander": "^2.15.1",
     "inquirer": "^6.0.0"
   }

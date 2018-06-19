@@ -1,25 +1,17 @@
-import { assert } from 'chai';
-import { Compiler } from '../compiler';
-import * as utils from '@chainspin/utils';
+import test from 'ava';
+import * as glob from 'fast-glob';
+import { Compiler } from '..';
 
-describe('compiler', function () {
+test('compiles solidity contracts', (t) => {
+  const compiler = new Compiler();
+  compiler.require('./src/tests/assets/*.sol');
+  t.is(compiler.serialize().length, 3);
+});
 
-  before(async function () {
-    this.compiler = new Compiler({
-      src: './src/tests/assets',
-      dist: './build',
-    });
-  });
-
-  it('compiles solidity contracts', async function () {
-    await this.compiler.compile();
-    assert.equal(this.compiler.data.length, 7);
-  });
-
-  it('saves compiled data as JSON files with ABI/BIN', async function () {
-    await this.compiler.save();
-    const files = await utils.getFiles('./build');
-    assert.equal(files.length, 7);
-  });
-
+test('saves compiled data as JSON files with ABI/BIN', async (t) => {
+  const compiler = new Compiler();
+  compiler.require('./src/tests/assets/*.sol');
+  compiler.save('./build/foo');
+  const files = glob.sync('./build/foo/*.json') as string[];
+  t.is(files.length, 2);
 });

@@ -1,26 +1,19 @@
-import { assert } from 'chai';
+import test from 'ava';
 import * as request from 'supertest';
 import { Sandbox } from '../sandbox';
 
-describe('sandbox', function () {
+const sandbox = new Sandbox({ port: 8911 });
 
-  before(async function () {
-    this.sandbox = new Sandbox({
-      port: 8911,
-    });
-    await this.sandbox.listen();
-  });
+test.before(async () => {
+  await sandbox.listen();  
+})
+test.after(async () => {
+  sandbox.close();
+});
 
-  after(async function () {
-    this.sandbox.close();
-  });
-
-  it('listens for requests', async function () {
-    const res = await request('http://localhost:8911')
-      .get('/')
-      .catch((e) => e.response);
-
-    assert.equal(res.status, 400);
-  });
-
+test('listens for requests', async (t) => {
+  const res = await request('http://localhost:8911')
+    .get('/')
+    .catch((e) => e.response);
+  t.is(res.status, 400);
 });

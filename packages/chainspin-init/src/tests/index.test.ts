@@ -1,10 +1,6 @@
-import { assert } from 'chai';
+import test from 'ava';
 import * as init from '..';
 
-describe('index', function () {
-
-  it('exposes Generator class', async function () {
-    assert.equal(!!init.Generator, true);
-  });
-
+test('exposes Generator class', async (t) => {
+  t.true(!!init.Generator);
 });

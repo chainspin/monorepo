@@ -1,5 +1,5 @@
 {
-  "name": "@chainspin/test",
+  "name": "@chainspin/spec",
   "version": "0.16.0",
   "description": "Test suits for ChainSpin framework.",
   "main": "./dist/index.js",
@@ -9,14 +9,20 @@
     "build": "npm run clean; tsc",
     "lint": "tslint 'src/**/*.ts?(x)'",
     "prepublishOnly": "npm run build",
-    "test": "NODE_NO_WARNINGS=1 mocha --require ts-node/register --inspect --recursive ./src/tests/**/*.test.ts"
+    "test": "ava"
   },
-  "chainspin": {
-    "sandboxHost": "127.0.0.1",
-    "sandboxPort": 8545,
-    "solcDist": "src/tests/assets",
-    "testRoot": "src/tests/assets",
-    "testTimeout": 60000
+  "ava": {
+    "compileEnhancements": false,
+    "extensions": [
+      "ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ],
+    "files": [
+      "src/tests/*.test.ts",
+      "src/tests/**/*.test.ts"
+    ]
   },
   "license": "MIT",
   "devDependencies": {
@@ -26,12 +32,11 @@
   },
   "dependencies": {
     "@chainspin/sandbox": "^0.16.0",
-    "@chainspin/utils": "^0.16.0",
-    "@types/chai": "^4.1.3",
-    "@types/mocha": "^5.2.1",
-    "chai": "^4.1.2",
+    "@hayspec/core": "^0.2.1",
+    "@hayspec/reporter": "^0.2.1",
+    "@hayspec/runner": "^0.2.1",
+    "ava": "^1.0.0-beta.6",
     "lerna": "^2.11.0",
-    "mocha": "^5.2.0",
     "web3": "git+https://github.com/ethereum/web3.js#newAbiLib",
     "webpack": "^4.0.0"
   }

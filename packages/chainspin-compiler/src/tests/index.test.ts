@@ -1,10 +1,6 @@
-import { assert } from 'chai';
+import test from 'ava';
 import * as compiler from '..';
 
-describe('index', function () {
-
-  it('exposes Compiler class', async function () {
-    assert.equal(!!compiler.Compiler, true);
-  });
-
+test('exposes Compiler class', async (t) => {
+  t.is(!!compiler.Compiler, true);
 });

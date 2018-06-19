@@ -1,10 +1,6 @@
-import { assert } from 'chai';
+import test from 'ava';
 import * as sandbox from '..';
 
-describe('index', function () {
-
-  it('exposes Sandbox class', async function () {
-    assert.equal(!!sandbox.Sandbox, true);
-  });
-
+test('exposes Sandbox class', async (t) => {
+  t.true(!!sandbox.Sandbox);
 });

@@ -1,4 +1,4 @@
-import * as utils from '@chainspin/utils';
+import * as fsx from 'fs-extra';
 import * as path from 'path';
 import * as structure from './structure';
 
@@ -33,12 +33,12 @@ export class Generator {
       const dest = path.resolve(this.recipe.root, ...file.path);
       
       const dir = path.dirname(dest);
-      await utils.ensureDirectoryDeeply(dir);
+      await fsx.ensureDir(dir);
 
       const src = file.content
         .replace('{{ name }}', this.recipe.name)
         .replace('{{ description }}', this.recipe.description);
-      await utils.writeFile(dest, src);
+      await fsx.writeFile(dest, src);
     }
   }
 

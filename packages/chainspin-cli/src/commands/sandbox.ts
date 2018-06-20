@@ -1,18 +1,15 @@
 import { Sandbox } from '@chainspin/sandbox';
-import * as utils from '../utils';
 
 /**
  * Starts Ethereum sandbox server.
  */
-export default async function () {
-  const config = await utils.getConfig();
-  const sandbox = new Sandbox({
-    host: config.sandboxHost,
-    port: config.sandboxPort,
-  });
+export default async function (n, s, options) {
+  const { port, host } = options;
+
+  const sandbox = new Sandbox();
   try {
-    await sandbox.listen();
-    console.log(`Sendbox listening (${config.sandboxHost}:${config.sandboxPort}) ...`);
+    await sandbox.listen(port, host);
+    console.log(`Listening at ${host}:${port} ...`);
   } catch (e) {
     console.error(e);
   }

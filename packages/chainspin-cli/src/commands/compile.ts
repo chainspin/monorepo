@@ -1,19 +1,14 @@
 import { Compiler } from '@chainspin/compiler';
-import * as utils from '../utils';
 
 /**
  * Compiles solidity contracts.
  */
 export default async function () {
-  const config = await utils.getConfig();
-  const compiler = new Compiler({
-    src: config.solcSrc,
-    dist: config.solcDist,
-  });
+  const compiler = new Compiler();
   try {
     console.log('Compiling contracts ...',);
-    await compiler.compile();
-    await compiler.save();
+    compiler.require('./src/contracts/*.sol', './src/contracts/**/*.sol');
+    compiler.save('./build');
     console.log('Done');
   } catch (e) {
     console.error(e);

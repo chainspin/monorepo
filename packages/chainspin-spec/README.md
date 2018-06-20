@@ -11,15 +11,10 @@ const spec = new Spec<Data>();
 
 spec.before(async (ctx) => {
   ctx.set('id', 100);
+  ctx.set('web3', context.web3);
   ctx.set('accounts', await context.getAccounts());
-  ctx.set('User', await context.getContract({ str: './src/contracts/User' }));
+  ctx.set('User', await context.requireContract({ str: './src/contracts/User' }));
 });
-
-spec.test('has cars', (ctx) => {
-  const User = ctx.get('User');
-});
-
-spec.skip('has trucks', (ctx) => {});
 
 export default spec;
 ```

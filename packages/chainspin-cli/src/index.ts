@@ -1,39 +1,35 @@
-import * as program from 'commander';
-import versionHandler from './commands/version';
+import * as args from 'args';
+// import versionHandler from './commands/version';
 import initHandler from './commands/init';
 import sandboxHandler from './commands/sandbox';
 import compileHandler from './commands/compile';
 import testHandler from './commands/test';
 
 /**
- * Injects TypeScript support so commands will be able to parse also TypeScript files.
+ * Command parsing.
  */
-require('ts-node').register();
+const flags = args.parse(process.argv);
 
 /**
- * Builds command-line interface.
+ * Upgrading environment.
  */
-program
-  .command('version')
-  .description('Displays package version.')
-  .action(versionHandler);
-program
-  .command('init')
-  .description('Initializes project directory.')
-  .action(initHandler);
-program
-  .command('sandbox')
-  .description('Starts Ethereum sandbox server.')
-  .action(sandboxHandler);
-program
-  .command('compile')
-  .description('Compiles solidity contracts.')
-  .action(compileHandler);
-program
-  .command('test')
-  .description('Runs tests.')
-  .action(testHandler);
-program
-  .command('')
-program
-  .parse(process.argv);
+if (typeof flags.require === 'string') {
+  flags.require.split(',').forEach((v) => require(v));
+}
+
+/**
+ * Interface definition.
+ */
+args
+  .option('require', 'Display program version.')
+args
+  .command('compile', 'Compiles solidity contracts.', compileHandler);
+args
+  .command('init', 'Initializes project directory.', initHandler);
+args
+  .option('port', 'Server port number.', 8545)
+  .option('host', 'Server hostname.', 'localhost')
+  .command('sandbox', 'Starts Ethereum sandbox server.', sandboxHandler);
+args
+  .option('match', 'Test files match pattern.', './src/tests/**/*.test.*')
+  .command('test', 'Runs tests.', testHandler);

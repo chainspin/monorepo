@@ -1,9 +1,6 @@
 ```js
 import { Sandbox } from '../sandbox';
 
-const sandbox = new Sandbox({
-  host: 'localhost',
-  port: 8911,
-});
-this.sandbox.listen(); // => Promise
+const sandbox = new Sandbox();
+sandbox.listen(8911, 'localhost'); // => Promise
 ```

@@ -1,6 +1,6 @@
 {
   "name": "@chainspin/spec",
-  "version": "0.16.0",
+  "version": "0.16.1",
   "description": "Test suits for ChainSpin framework.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

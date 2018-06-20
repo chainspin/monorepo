@@ -9,7 +9,7 @@
     "build": "npm run clean; tsc",
     "lint": "tslint 'src/**/*.ts?(x)'",
     "prepublishOnly": "npm run build",
-    "test": "ava"
+    "test": "ava --verbose"
   },
   "ava": {
     "compileEnhancements": false,
@@ -26,18 +26,18 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@chainspin/sandbox": "^0.16.3",
     "@types/node": "^10.3.2",
     "ts-node": "^6.1.0",
-    "typescript": "^2.9.1"
+    "typescript": "^2.9.1",
+    "web3": "^1.0.0-beta.34"
   },
   "dependencies": {
-    "@chainspin/sandbox": "^0.16.0",
-    "@hayspec/core": "^0.2.1",
-    "@hayspec/reporter": "^0.2.1",
-    "@hayspec/runner": "^0.2.1",
+    "@hayspec/core": "^0.2.6",
+    "@hayspec/reporter": "^0.2.6",
+    "@hayspec/runner": "^0.2.6",
     "ava": "^1.0.0-beta.6",
     "lerna": "^2.11.0",
-    "web3": "git+https://github.com/ethereum/web3.js#newAbiLib",
     "webpack": "^4.0.0"
   }
 }

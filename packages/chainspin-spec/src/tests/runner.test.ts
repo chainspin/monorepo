@@ -1,26 +1,8 @@
-// import * as fs from 'fs';
-// import * as path from 'path';
-// import { assert } from 'chai';
-// import { Runner } from '..';
+import test from 'ava';
+import { Runner } from '..';
 
-// const { chainspin } = JSON.parse(
-//   fs.readFileSync(path.resolve(process.cwd(), 'package.json')).toString()
-// );
-
-// describe('runner', function () {
-
-//   it('performs tests', async function () {
-//     try {
-//       await new Runner({
-//         host: chainspin.sandboxHost,
-//         port: chainspin.sandboxPort,
-//         root: chainspin.testRoot,
-//         timeout: chainspin.testTimeout,
-//         quiet: true,
-//       }).run();
-//     } catch (e) {
-//       assert.fail();
-//     }
-//   });
-
-// });
+test('method `require` loads spec files based on pattern', async (t) => {
+  const runner = new Runner();
+  await runner.require('./src/tests/assets/*.hay.ts');
+  t.is(runner.results.length, 1);
+});

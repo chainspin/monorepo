@@ -1,12 +1,11 @@
 import * as core from "@hayspec/core";
 import { DefaultReporter } from "@hayspec/reporter";
-import Web3 from 'web3';
 
 /**
  * 
  */
-export class Stage<Data = {}> extends core.Stage<Data> {
-  public web3: Web3;
+export class Stage<Data = {}, Web3 = {}> extends core.Stage<Data> {
+  public web3: any;
 
   /**
    * 

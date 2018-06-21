@@ -3,7 +3,7 @@
  */
 export interface FileRecipe {
   path: string[];
-  content: string;
+  content: string[];
 }
 
 /**
@@ -17,7 +17,8 @@ export const files = [
       `.vscode`,
       `node_modules`,
       `dist`,
-    ].join('\n'),
+      `build`,
+    ],
   },
   {
     path: ['.npmignore'],
@@ -25,7 +26,7 @@ export const files = [
       `.DS_Store`,
       `.vscode`,
       `node_modules`,
-    ].join('\n'),
+    ],
   },
   {
     path: ['package.json'],
@@ -35,20 +36,20 @@ export const files = [
       `  "version": "0.0.0",`,
       `  "description": "{{ description }}",`,
       `  "scripts": {`,
-      `    "clean": "chainspin clean",`,
       `    "compile": "chainspin compile",`,
       `    "sandbox": "chainspin sandbox",`,
       `    "prepublishOnly": "chainspin compile",`,
-      `    "test": "chainspin compile && chainspin test"`,
+      `    "test": "chainspin compile && chainspin test --require ts-node/register"`,
       `  },`,
       `  "license": "MIT",`,
       `  "dependencies": {`,
       `    "@chainspin/cli": "latest",`,
       `    "@chainspin/spec": "latest",`,
-      `    "typescript": "^2.9.1"`,
+      `    "ts-node": "^6.1.1",`,
+      `    "typescript": "latest"`,
       `  }`,
       `}`,
-    ].join('\n'),
+    ],
   },
   {
     path: ['src', 'contracts', 'Main.sol'],
@@ -66,27 +67,23 @@ export const files = [
       `  }`,
       ``,
       `}`,
-    ].join('\n'),
+    ],
   },
   {
     path: ['src', 'tests', 'Main.test.ts'],
     content: [
-      `import { assert, artifact } from '@chainspin/test';`,
+      `import { Spec } from '@chainspin/spec';`,
       ``,
-      `describe('Main', function () {`,
+      `const spec = new Spec();`,
       ``,
-      `  describe('works()', function () {`,
+      `spec.test('returns boolean', async (ctx) => {`,
+      `  const main = await ctx.deploy({ src: './build/Main.json' });`,
+      `  const value = await main.methods.works().call();`,
+      `  ctx.is(value, 100);`,
+      `});`,
       ``,
-      `    it('returns boolean', async function () {`,
-      `      const main = await artifact.deploy({ src: 'Main.json' });`,
-      `      const value = await main.methods.works().call();`,
-      `      assert.equal(value, 100);`,
-      `    });`,
-      ``,
-      `  });`,
-      ``,
-      `});`, 
-    ].join('\n'),
+      `export default spec;`, 
+    ],
   },
   {
     path: ['tsconfig.json'],
@@ -97,6 +94,6 @@ export const files = [
       `    "target": "es6"`,
       `  }`,
       `}`,
-    ].join('\n'),
+    ],
   },
 ] as FileRecipe[];

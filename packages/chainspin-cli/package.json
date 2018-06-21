@@ -1,6 +1,6 @@
 {
   "name": "@chainspin/cli",
-  "version": "0.16.0",
+  "version": "0.16.1",
   "description": "Command-line tool for ChainSpin framework.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -9,15 +9,26 @@
   },
   "scripts": {
     "clean": "rm -Rf ./dist; rm -Rf ./build",
-    "build": "npm run clean; tsc",
+    "transpile": "npm run clean; tsc",
     "lint": "tslint 'src/**/*.ts?(x)'",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "test": "npm run transpile && ava"
+  },
+  "ava": {
+    "compileEnhancements": false,
+    "files": [
+      "dist/tests/*.test.js",
+      "dist/tests/**/*.test.js"
+    ]
   },
   "license": "MIT",
   "devDependencies": {
     "@types/args": "^3.0.0",
     "@types/inquirer": "^0.0.41",
     "@types/node": "^10.3.2",
+    "@types/yargs": "11.0.0",
+    "ava": "^0.25.0",
+    "ts-node": "^6.1.1",
     "tslint": "^5.10.0",
     "typescript": "^2.9.1",
     "web3": "^1.0.0-beta.34"
@@ -26,12 +37,13 @@
     "web3": "^1.0.0-beta.34"
   },
   "dependencies": {
-    "@chainspin/compiler": "0.16.1",
-    "@chainspin/init": "^0.16.0",
-    "@chainspin/sandbox": "^0.16.3",
-    "@chainspin/spec": "^0.16.1",
+    "@chainspin/compiler": "latest",
+    "@chainspin/init": "latest",
+    "@chainspin/sandbox": "latest",
+    "@chainspin/spec": "latest",
     "args": "^5.0.0",
     "inquirer": "^6.0.0",
-    "ts-node": "^6.1.0"
+    "typedarray-to-buffer": "3.1.5",
+    "yargs": "11.0.0"
   }
 }

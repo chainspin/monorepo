@@ -3,8 +3,8 @@ import { Sandbox } from '@chainspin/sandbox';
 /**
  * Starts Ethereum sandbox server.
  */
-export default async function (n, s, options) {
-  const { port, host } = options;
+export default async function (argv) {
+  const { port, host, ttl } = argv;
 
   const sandbox = new Sandbox();
   try {
@@ -12,5 +12,9 @@ export default async function (n, s, options) {
     console.log(`Listening at ${host}:${port} ...`);
   } catch (e) {
     console.error(e);
+  }
+
+  if (ttl) {
+    setTimeout(() => sandbox.close(), ttl);
   }
 }

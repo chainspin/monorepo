@@ -36,6 +36,7 @@ export class Generator {
       await fsx.ensureDir(dir);
 
       const src = file.content
+        .join('\n')
         .replace('{{ name }}', this.recipe.name)
         .replace('{{ description }}', this.recipe.description);
       await fsx.writeFile(dest, src);

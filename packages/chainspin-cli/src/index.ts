@@ -1,35 +1,91 @@
-import * as args from 'args';
-// import versionHandler from './commands/version';
+import * as yargs from 'yargs';
 import initHandler from './commands/init';
 import sandboxHandler from './commands/sandbox';
 import compileHandler from './commands/compile';
 import testHandler from './commands/test';
 
 /**
- * Command parsing.
+ * Interface definition.
  */
-const flags = args.parse(process.argv);
+const { argv } = yargs
+  .usage('Usage: $0 --help')
+  .command('compile', 'Compiles solidity contracts', (yargs) => yargs
+    .usage('Usage: $0 --match *.sol --build ./build')
+    .option('match', {
+      array: true,
+      description: 'Matching pattern',
+      default: ['./src/contracts/**/*.sol'],
+    })
+    .option('build', {
+      string: true,
+      description: 'Build folder path',
+      default: './build',
+    }),
+    compileHandler)
+  .command('init', 'Initializes project directory.',  (yargs) => yargs
+    .option('root', {
+      string: true,
+      description: 'Project root folder',
+      default: '.',
+    })
+    .option('name', {
+      string: true,
+      description: 'Project name',
+    })
+    .option('description', {
+      string: true,
+      description: 'Project description',
+    }),
+    initHandler)
+  .command('sandbox', 'Starts Ethereum sandbox server.', (yargs) => yargs
+    .option('port', {
+      number: true,
+      description: 'Server port number',
+      default: 8545,
+    })
+    .option('host', {
+      string: true,
+      description: 'Server host name',
+      default: 'localhost',
+    })
+    .option('ttl', {
+      string: true,
+      description: 'TTL after the server is shutdown',
+    }),
+    sandboxHandler)
+  .command('test', 'Runs tests', (yargs) => yargs
+    .option('match', {
+      array: true,
+      description: 'Match pattern',
+      default: ['./src/tests/**/*.test.js'],
+    })
+    .option('require', {
+      array: true,
+      description: 'Require dependencies',
+    })
+    .option('server', {
+      boolean: true,
+      description: 'Start sandbox server',
+      default: 8545,
+    })
+    .option('port', {
+      number: true,
+      description: 'Server port number',
+      default: 8545,
+    })
+    .option('host', {
+      string: true,
+      description: 'Server host name',
+      default: 'localhost',
+    }),
+    testHandler)
+  .epilog('Copyright © 0xcert.org 2018.')
+  .help()
+  .version();
 
 /**
  * Upgrading environment.
  */
-if (typeof flags.require === 'string') {
-  flags.require.split(',').forEach((v) => require(v));
+if (Array.isArray(argv.require)) {
+  argv.require.forEach((v) => require(v));
 }
-
-/**
- * Interface definition.
- */
-args
-  .option('require', 'Display program version.')
-args
-  .command('compile', 'Compiles solidity contracts.', compileHandler);
-args
-  .command('init', 'Initializes project directory.', initHandler);
-args
-  .option('port', 'Server port number.', 8545)
-  .option('host', 'Server hostname.', 'localhost')
-  .command('sandbox', 'Starts Ethereum sandbox server.', sandboxHandler);
-args
-  .option('match', 'Test files match pattern.', './src/tests/**/*.test.*')
-  .command('test', 'Runs tests.', testHandler);

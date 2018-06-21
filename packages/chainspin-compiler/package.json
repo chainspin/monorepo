@@ -6,9 +6,9 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "clean": "rm -Rf ./dist",
-    "build": "npm run clean; tsc",
+    "transpile": "npm run clean; tsc",
     "lint": "tslint 'src/**/*.ts?(x)'",
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "npm run transpile",
     "test": "ava"
   },
   "ava": {

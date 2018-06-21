@@ -1,18 +1,17 @@
 import * as path from 'path';
 import { Context as ContextBase } from '@hayspec/core';
 import { Stage } from './stage';
-import Web3 from 'web3';
 
 /**
  * 
  */
-export class Context<Data = {}> extends ContextBase<Data> {
-  public stage: Stage<Data>;
+export class Context<Data = {}, Web3 = {}> extends ContextBase<Data> {
+  public stage: Stage<Data, Web3>;
 
   /**
    * 
    */
-  public constructor(stage: Stage<Data>) {
+  public constructor(stage: Stage<Data, Web3>) {
     super(stage);
   }
 
@@ -27,7 +26,7 @@ export class Context<Data = {}> extends ContextBase<Data> {
    * 
    */
   public async getAccounts() {
-    return this.web3.eth.getAccounts();
+    return this.stage.web3.eth.getAccounts();
   }
 
   /**
@@ -49,7 +48,7 @@ export class Context<Data = {}> extends ContextBase<Data> {
     };
     const src = path.resolve(process.cwd(), options.src);
     const data = require(src);
-    const contract = new this.web3.eth.Contract(data.abi);
+    const contract = new this.stage.web3.eth.Contract(data.abi);
     const deploy = await contract.deploy({
       data: data.bytecode,
       arguments: config.args,
@@ -58,7 +57,7 @@ export class Context<Data = {}> extends ContextBase<Data> {
       gas: config.gas,
       gasPrice: config.gasPrice,
     });
-    return new this.web3.eth.Contract(
+    return new this.stage.web3.eth.Contract(
       data.abi,
       deploy.options.address
     );

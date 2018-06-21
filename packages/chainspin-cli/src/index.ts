@@ -57,7 +57,7 @@ const { argv } = yargs
     .option('match', {
       array: true,
       description: 'Match pattern',
-      default: ['./src/tests/**/*.test.js'],
+      default: ['./src/tests/**/*.test.*'],
     })
     .option('require', {
       array: true,

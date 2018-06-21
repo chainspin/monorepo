@@ -5,20 +5,20 @@ import { Stage } from './stage';
 /**
  * 
  */
-export class Context<Data = {}, Web3 = {}> extends ContextBase<Data> {
-  public stage: Stage<Data, Web3>;
+export class Context<Data = {}> extends ContextBase<Data> {
+  public stage: Stage<Data>;
 
   /**
    * 
    */
-  public constructor(stage: Stage<Data, Web3>) {
+  public constructor(stage: Stage<Data>) {
     super(stage);
   }
 
   /**
    * 
    */
-  public get web3(): Web3 {
+  public get web3() {
     return this.stage.web3;
   }
 
@@ -33,11 +33,11 @@ export class Context<Data = {}, Web3 = {}> extends ContextBase<Data> {
    * 
    */
   public async requireContract(options: {
-      src: string;
-      args?: any[];
-      from?: string;
-      gas?: number;
-      gasPrice?: number;
+    src: string;
+    args?: any[];
+    from?: string;
+    gas?: number;
+    gasPrice?: number;
   }) {
     const config = {
       args: [],

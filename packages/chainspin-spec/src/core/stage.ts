@@ -4,13 +4,13 @@ import { DefaultReporter } from "@hayspec/reporter";
 /**
  * 
  */
-export class Stage<Data = {}, Web3 = {}> extends core.Stage<Data> {
+export class Stage<Data = {}> extends core.Stage<Data> {
   public web3: any;
 
   /**
    * 
    */
-  public constructor (web3: Web3, reporter: DefaultReporter) {
+  public constructor (web3: any, reporter: DefaultReporter) {
     super(reporter);
     this.web3 = web3;
   }

@@ -1,6 +1,6 @@
 {
   "name": "@chainspin/spec",
-  "version": "0.16.3",
+  "version": "0.17.0",
   "description": "Test suits for ChainSpin framework.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -26,21 +26,20 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@chainspin/sandbox": "^0.16.3",
+    "@chainspin/sandbox": "^0.17.0",
     "@types/node": "^10.3.2",
+    "ava": "^1.0.0-beta.6",
     "ts-node": "^6.1.0",
-    "typescript": "^2.9.1",
-    "web3": "^1.0.0-beta.34"
+    "tslint": "^5.10.0",
+    "typescript": "^2.9.1"
   },
   "peerDependencies": {
-    "web3": "^1.0.0-beta.34"
+    "web3": "*"
   },
   "dependencies": {
     "@hayspec/core": "^0.2.6",
     "@hayspec/reporter": "^0.2.6",
     "@hayspec/runner": "^0.2.6",
-    "ava": "^1.0.0-beta.6",
-    "lerna": "^2.11.0",
-    "webpack": "^4.0.0"
+    "web3": "1.0.0-beta.34"
   }
 }
